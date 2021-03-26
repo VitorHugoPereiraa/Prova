@@ -16,7 +16,6 @@ function NewTaks() {
   const [description, setDescription] = useState("")
   const [userResponsible, setUserResponsible] = useState("")
   const [emailError, setEmailError] = useState("")
-  const [taskId, setTasksId] = useState(0)
 
   async function creteTasks() {
 
@@ -26,15 +25,14 @@ function NewTaks() {
 
     const taskRef = (await db.collection("tarefas").get()).docs.length++
 
-    setTasksId(taskRef + 1)
 
-    await db.collection('tarefas').doc(taskId.toString()).set({
+    await db.collection('tarefas').doc(taskRef.toString()).set({
       titulo: title,
       descricao: description,
       responsavel: userResponsible,
       status: "Pendente",
       historico: ["Pendente"],
-      id: taskId
+      id: taskRef
     }).catch(err => console.error(err))
 
    await setEmailError('')
