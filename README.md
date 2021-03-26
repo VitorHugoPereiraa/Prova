@@ -1,70 +1,35 @@
-# Getting Started with Create React App
+# Prova para a Taugor
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+Neste teste o objetivo é construir uma aplicação utilizando ReactJS e Firestore .
+Através do código desenvolvido serão determinados os seguintes indicadores:
+Qualidade do Código
+Pensamento Lógico
+Qualidade do Design
 
-In the project directory, you can run:
+A aplicação:
+Uma aplicação WEB, desenhada para controlar atividades.
+Na aplicação deve ser possível:
+Criar uma atividade com os seguintes campos:
+status: Pendente, Em andamento, Finalizada, Cancelada.
+título
+descrição
+usuário responsável
+Modificar o status de uma atividade
+Modificar o responsável por uma atividade
+Na atividade deve ser possível ver o histórico de eventos
+Filtrar atividades pelo status
 
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+O código:
+1. O Front End deve ser em React JS.
+2. Todos os componentes devem ser próprios de modo que não deve ser utilizada lib
+externa como Material UI, ou algo similar.
+3. Os componentes devem ser function components, utilzando hooks.
+4. A base de dados deve ser Firestore, do Firebase (Google). Para isto pode criar uma
+conta gratuita no firebase e utilizar a SDK JS do firebase.
+5. Não é necessário utilizar redux, mas pode usar se desejar.
+6. Pode utilizar um pré-compilador de SASS/SCSS/LESS para o CSS, mas não é
+obrigatório, no entanto o estilo em sí também será levado em conta,
+7. Pode utilizar Type Script, se não, JS no mínimo ES6.
+8. A aplicação deve possuir autenticação simples. Pode utilizar a autenticação nativa do
+Firebase.
