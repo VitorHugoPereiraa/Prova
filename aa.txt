@@ -1,0 +1,10 @@
+  useEffect(() => {
+    (async function handleTasks() {
+      const statusLocalStorage = localStorage.getItem('search_status')
+      const doc = await db.collection('tarefas').where('status', '==', statusLocalStorage).get()
+
+      console.log(doc)
+      setTasks(doc.docs)
+      setAlready(true)
+    })()
+  }, [])

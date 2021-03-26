@@ -9,7 +9,7 @@
         rgba(17, 27, 75, 0.9) 100%
       );
 }
-
+  
 .content{
     flex: 6;
     padding: 40px 50px;
@@ -77,7 +77,7 @@
     align-items: center;
     width: 100%;
     justify-content: center;
-    margin-top: 30px;
+    margin-top: 60px;
     font-size: 30px;
     font-family: 'Roboto', sans-serif;
     color:  rgba(17, 27, 75, 0.9);
@@ -124,11 +124,45 @@
     border-radius: 10px;
     padding: 30px 50px;
 }
-.closeModal{
-    cursor: pointer;
+.modal h3{
+    font-size: 35px;
+    margin-bottom: 30px;
+}
+#inputStatus, #inputEditReponsible{
+    height: 70px;
+    font-size: 30px;
+    padding: 10px 30px;
+    margin-bottom: 100px;
+    border-radius: 30px;
+    border: 2px solid rgba(17, 27, 75, 0.9);
+
 }
 
-@media(max-width: 720px) {
+#inputStatus option {
+    background-color: rgba(17, 27, 75, 0.9);
+    color: #fff;
+    padding-bottom: 10px;
+    border-radius: 30px;
+}
+
+#btnSendUpdate{
+    width: 60%;
+    height: 60px;
+    align-self: center;
+}
+.closeModal{
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+.finding{
+    font-size: 40px;
+    text-align: center;
+}
+
+@media(max-width: 1024px) {
+    .divHome{
+        min-height: 100vw;
+    }
     .content{
         padding: 20% 15%;
         width: 100vw;
@@ -150,5 +184,30 @@
     }
     .containerTaskTitle{
         flex-direction: column;
+    }
+    .modal{
+        width: 90%;
+        height: 80%;
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        border-radius: 10px;
+        padding: 30px 50px;
+    }
+    .modal h3{
+        font-size: 17px;
+        margin-bottom: 30px;
+    }
+    #inputStatus, #inputEditReponsible{
+        height: 60px;
+        font-size: 20px;
+        padding: 10px 30px;
+        margin-bottom: 50px;
+        border-radius: 30px;
+        border: 2px solid rgba(17, 27, 75, 0.9);
+    }
+    .content{
+        padding: 70px 10px;
     }
 }

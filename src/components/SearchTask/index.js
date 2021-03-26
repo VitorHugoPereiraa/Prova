@@ -10,29 +10,31 @@ import { IoMdClose } from 'react-icons/io';
 
 import fire, { db } from '../../fire'
 
-import "./Home.css"
+import "./SearchTask.css"
 import Navbar from '../Navbar'
 
 
 
-function Home() {
+function SearchTask() {
 
   const [alReady, setAlready] = useState(false)
   const [tasks, setTasks] = useState()
   const [openModal, setOpenModal] = useState(false)
-  const [existData, setExistData]  = useState(false)
+  const [existData, setExistData] = useState(false)
 
 
   useEffect(() => {
     (async function handleTasks() {
-      const doc = await db.collection('tarefas').get()
+      const statusLocalStorage = localStorage.getItem('search_status')
+      const doc = await db.collection('tarefas').where('status', '==', statusLocalStorage).get()
 
-      
       setTasks(doc.docs)
       if(doc.size !== 0) setExistData(true)
       setAlready(true)
     })()
   }, [])
+
+  
 
   async function handleEditTasks() {
     const _id = localStorage.getItem('task_id')
@@ -61,7 +63,7 @@ function Home() {
     const historicoLength = historico.length
     const attStatus = await db.collection('tarefas').doc(id.toString()).update({
       status: "Cancelada",
-      historico: historico[historicoLength -1] === "Cancelada" ? historico :  [...historico, "Cancelada"],
+      historico: historico[historicoLength - 1] === "Cancelada" ? historico : [...historico, "Cancelada"],
     })
   }
 
@@ -125,8 +127,8 @@ function Home() {
               />
 
               <button
-                onClick={ async () => {
-                 await handleEditTasks()
+                onClick={async () => {
+                  await handleEditTasks()
                   window.location.href = "/home"
                 }}
                 id="btnSendUpdate"
@@ -146,7 +148,7 @@ function Home() {
           <section className='containerTasks'>
             {
 
-              alReady && existData ? 
+              alReady && existData ?
                 tasks.map((i, key) => {
                   const response = i.data()
                   return (
@@ -164,12 +166,12 @@ function Home() {
                             setOpenModal(!openModal)
                           }}
                           className="editIcon" size={40} color='green' />
-                        <FcCancel onClick={ async () => {
+                        <FcCancel onClick={async () => {
                           await handleCancelStatus(response.id)
                           window.location.href = "/home"
                         }} className="editIcon" size={40} color='red' />
                       </div>
-                      <span className="containerTaskResponsible"> 
+                      <span className="containerTaskResponsible">
                         Responsavel: <p>{response.responsavel}</p>
                       </span>
                       <span className="containerHistory">
@@ -201,4 +203,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default SearchTask;

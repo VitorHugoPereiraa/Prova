@@ -21,6 +21,18 @@ function Navbar() {
         setEmail(emailSaved)
     }, [])
 
+
+    function setSearchStatus() {
+        localStorage.setItem('search_status', getInputStatusValue())
+    }
+
+    function getInputStatusValue() {
+        const select = document.getElementById('selectStatusSearch');
+        const value = select.options[select.selectedIndex].value;
+    
+        return value
+      }
+
     return (
         <>
 
@@ -36,32 +48,17 @@ function Navbar() {
                     <div className="navLink filter-task">
                         <p className="statusTask">Status: </p>
 
-                        <div className="containerInputs">
-                            <label for="pendente">Pendente</label>
-                            <input type="radio" id="pendente" name="status" value="pendente" />
-                        </div>
+                            <select id="selectStatusSearch" className="selectStatusSearch">
+                                <option>Pendente</option>
+                                <option>Em andamento</option>
+                                <option>Finalizada</option>
+                                <option>Cancelada</option>
+                            </select>
 
-                        <div className="containerInputs">
-                            <label for="em-andamento">Em andamento</label>
-                            <input type="radio" id="em-andamento" name="status" value="em andamento" />
-                        </div>
-
-                        <div className="containerInputs">
-                            <label for="finalizada">Finalizada</label>
-                            <input type="radio" id="finalizada" name="status" value="finalizada" />
-                        </div>
-
-                        <div className="containerInputs">
-                            <label for="cancelada">Cancelada</label>
-                            <input type="radio" id="cancelada" name="status" value="cancelada" />
-                        </div>
-
-                        <div className="containerInputs">
-                            <label for="todas">Todas</label>
-                            <input type="radio" id="todas" name="status" value="todas" />
-                        </div>
-
-                        <button className='button-search'><p>Buscar</p></button>
+                        <button className='button-search' onClick={() => { 
+                            setSearchStatus() 
+                            window.location.href = "/pesquisar-tarefas" 
+                        }}><Link to="/pesquisar-tarefas">Buscar</Link></button>
 
                     </div>
                     <div className="navLink lastLink"><p><Link to="/nova-tarefa" className="toNewLink">Nova tarefas <AiOutlineArrowLeft size={16} color="#02acac" /></Link></p></div>

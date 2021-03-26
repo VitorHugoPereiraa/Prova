@@ -26,9 +26,9 @@ function NewTaks() {
 
     const taskRef = (await db.collection("tarefas").get()).docs.length++
 
-    setTasksId(taskId + 1)
+    setTasksId(taskRef + 1)
 
-    db.collection('tarefas').doc(taskId.toString()).set({
+    await db.collection('tarefas').doc(taskId.toString()).set({
       titulo: title,
       descricao: description,
       responsavel: userResponsible,
@@ -37,7 +37,8 @@ function NewTaks() {
       id: taskId
     }).catch(err => console.error(err))
 
-    setEmailError('')
+   await setEmailError('')
+    window.location.href = "/home"
   }
 
 
