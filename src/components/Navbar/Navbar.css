@@ -5,6 +5,7 @@
 }
 
 .sideBar{
+    height: 100vh;
     background-color: #fff;
     flex: 1;
     display: flex;
@@ -15,7 +16,6 @@
 .logo{
     text-align: center;
     font-size: 50px;
-    font-family: 'Lobster', cursive;
     flex: 1;
     height: 50px;
     width: 100%;
@@ -117,13 +117,20 @@
 .show{
     display: flex ;
 }
+.toNewLink{
+    text-decoration: none;
+    color: #000;
+}
 
+.linkLogo{
+    font-family: 'Lobster', cursive;
 
+}
 /*Medias Queries*/
 
 @media(max-width: 720px) {
     .menuIcon{
-        display: block;
+        display: flex;
         position: absolute;
         top: 20;
         left: 20;

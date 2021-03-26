@@ -1,5 +1,5 @@
 .divHome{
-    width: 100vw;
+    width: 100%;
     display: flex;
     position: relative;
     background: radial-gradient(
@@ -11,11 +11,144 @@
 }
 
 .content{
-    flex: 6
+    flex: 6;
+    padding: 40px 50px;
+}
+
+.containerTasks{
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 15px 10px;
+}
+
+.containerTask{
+    border: 1px solid #ccc;
+    padding: 15px 10px;
+    margin-bottom: 10px;
+
+}
+
+.containerTaskTitle{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom:  20px;
+    padding: 0 10px;
+}
+
+.containerTaskTitle h3{
+    font-size: 40px;
+    font-family: 'Roboto', sans-serif;
+}
+.containerTaskTitle p{
+    font-size: 30px;
+    color: #c3c3c3; 
+    font-family: 'Roboto', sans-serif;
+}
+
+.containerTaskDescription{
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.containerTaskDescription p{
+    flex: 8; 
+    width: 100%;
+}
+
+.containerTaskDescription .editIcon{
+    flex: 1;
+    cursor: pointer;
+}
+
+.containerTaskResponsible{
+    display: flex;
+    color: #707070;
+}
+
+.containerTaskResponsible p{
+    display: flex;
+    color: #000;
+    margin-left: 5px;
+}
+.containerHistory{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    margin-top: 30px;
+    font-size: 30px;
+    font-family: 'Roboto', sans-serif;
+    color:  rgba(17, 27, 75, 0.9);
+    cursor: pointer;
+
+}
+.containerHistory a{
+    margin-left: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.listHistory {
+    margin-left:20px;
+    list-style: none;
+}
+.listHistory li{
+    font-size: 20px;
+    font-weight: bold;
+    color:rgba(17, 27, 75, 0.9);
+    display: flex;
+    align-items: center;
+    
+}
+.containerModal {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 20;
+}
+.modal{
+    width: 60%;
+    height: 80%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border-radius: 10px;
+    padding: 30px 50px;
+}
+.closeModal{
+    cursor: pointer;
 }
 
 @media(max-width: 720px) {
     .content{
         padding: 20% 15%;
+        width: 100vw;
+    }
+    .containerTaskTitle h3{
+        font-size: 30px;
+        font-family: 'Roboto', sans-serif;
+    }
+    .containerTaskTitle p{
+        font-size: 20px;
+        color: #c3c3c3;
+        font-family: 'Roboto', sans-serif;
+    }
+    .containerTaskResponsible {
+        flex-wrap: wrap;
+    }
+    .containerTaskResponsible p{
+        font-size: 10;
+    }
+    .containerTaskTitle{
+        flex-direction: column;
     }
 }

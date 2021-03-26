@@ -4,11 +4,24 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  Redirect
 } from "react-router-dom";
 
 import Main from './components/Main.js'
 import Home from './components/Home'
+import NewTaks from './components/NewTaks'
+
+import { isAuthenticate } from './utils/isAuthenticate'
+
+
+function PrivateRoute(props) {
+  return (isAuthenticate() ?
+    <Route {...props} /> :
+    <Redirect to='/' />)
+
+
+}
 
 
 function App() {
@@ -18,9 +31,12 @@ function App() {
         <Route exact path='/'>
           <Main />
         </Route>
-        <Route exact path='/home'>
+        <PrivateRoute exact path="/home">
           <Home />
-        </Route>
+        </PrivateRoute>
+        <PrivateRoute exact path="/nova-tarefa">
+          <NewTaks />
+        </PrivateRoute>
       </Switch>
     </Router>
   );

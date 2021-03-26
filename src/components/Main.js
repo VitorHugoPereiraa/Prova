@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import fire from "../fire"
+import fire, { db } from "../fire"
 
 import Login from "./Login/index"
+
+import {
+  Redirect
+} from "react-router-dom";
 
 function Main() {
 
@@ -27,6 +31,11 @@ function Main() {
     fire
       .auth()
       .signInWithEmailAndPassword(email, password)
+      .then(user => {
+        localStorage.setItem('user_id', user.user.uid)
+        localStorage.setItem('user_email', email)
+        window.location.href = "/home";
+      })
       .catch(err => {
         switch (err.code) {
           case 'auth/invalid-email':
@@ -38,8 +47,8 @@ function Main() {
             setPasswordError(err.message)
             break
         }
-      console.log('errou')
       })
+
   }
 
   const handleSignUp = () => {
@@ -47,6 +56,26 @@ function Main() {
     fire
       .auth()
       .createUserWithEmailAndPassword(email, password)
+      .then(user => {
+        localStorage.setItem('user_email', email)
+        db
+        .collection('usuarios')
+        .add({
+          email: email,
+          password: password, 
+        })
+        .catch(err => {
+          switch (err.code) {
+            case 'auth/email-already-in-use':
+            case 'auth/invalid-email':
+              setEmailError(err.message)
+              break
+            case 'auth/weak-password':
+              setPasswordError(err.message)
+              break
+          }
+        })
+      })
       .catch(err => {
         switch (err.code) {
           case 'auth/email-already-in-use':
@@ -58,44 +87,41 @@ function Main() {
             break
         }
       })
+
   }
 
-  const handleLogout = () => {
-    fire.auth().signOut()
-  }
 
   const authListener = () => {
     fire.auth().onAuthStateChanged(user => {
-      if(user){
+      if (user) {
         clearInputs()
         setUser(user)
-      }else{
+      } else {
         setUser('')
       }
     })
   }
 
-  useEffect(()=> {
+  useEffect(() => {
     authListener()
 
   }, [])
 
   return (
     <div className="App">
-      <Login 
-      email={email}
-      setEmail={setEmail}
-      password={password}
-      setPassword={setPassword}
-      handleLogin={handleLogin}
-      handleSignUp={handleSignUp}
-      hasAccount={hasAccount}
-      setHasAccount={setHasAccount}
-      emailError={emailError}
-      passwordError={passwordError}
+      <Login
+        email={email}
+        setEmail={setEmail}
+        password={password}
+        setPassword={setPassword}
+        handleLogin={handleLogin}
+        handleSignUp={handleSignUp}
+        hasAccount={hasAccount}
+        setHasAccount={setHasAccount}
+        emailError={emailError}
+        passwordError={passwordError}
       />
     </div>
   );
 }
-
 export default Main;
